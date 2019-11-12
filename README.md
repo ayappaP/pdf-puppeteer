@@ -233,34 +233,293 @@ All we did here was remove the code that saves the pdf to S3 and instead uncomme
 Here is a basic `template.pug` file.
 
 ```
-    doctype html
-    html(lang='en')
-        head
-            meta(charset='UTF-8')
-            title PDF Generator
-            style
-            include style.css
-        body
-            h1 Monthly report
-
-            #body Here comes the values #{name}
+   doctype html
+    html(lang="en")
+    head
+        meta(charset="utf-8")
+        title Example 2
+        style
+        include style.css
+    body
+        header.clearfix
+        #logo
+            img(src="./logo.png")
+        #company
+            h2.name Company Name
+            div 455 Foggy Heights, AZ 85004, US
+            div (602) 519-0450
+            div
+            a(href="mailto:company@example.com") company@example.com
+        main
+        #details.clearfix
+            #client
+            .to INVOICE TO:
+            h2.name John Doe
+            .address 796 Silver Harbour, TX 79273, US
+            .email
+                a(href="mailto:john@example.com") john@example.com
+            #invoice
+            h1 INVOICE 3-2-1
+            .date Date of Invoice: 01/06/2014
+            .date Due Date: 30/06/2014
+        table(border="0" cellspacing="0" cellpadding="0")
+            thead
+            tr
+                th.no #
+                th.desc DESCRIPTION
+                th.unit UNIT PRICE
+                th.qty QUANTITY
+                th.total TOTAL
+            tbody
+            tr
+                td.no 01
+                td.desc
+                h3 Website Design
+                | Creating a recognizable design solution based on the company's existing visual identity
+                td.unit $40.00
+                td.qty 30
+                td.total $1,200.00
+            tr
+                td.no 02
+                td.desc
+                h3 Website Development
+                | Developing a Content Management System-based Website
+                td.unit $40.00
+                td.qty 80
+                td.total $3,200.00
+            tr
+                td.no 03
+                td.desc
+                h3 Search Engines Optimization
+                | Optimize the site for search engines (SEO)
+                td.unit $40.00
+                td.qty 20
+                td.total $800.00
+            tfoot
+            tr
+                td(colspan="2")
+                td(colspan="2") SUBTOTAL
+                td $5,200.00
+            tr
+                td(colspan="2")
+                td(colspan="2") TAX 25%
+                td $1,300.00
+            tr
+                td(colspan="2")
+                td(colspan="2") GRAND TOTAL
+                td $6,500.00
+        #thanks Thank you!
+        #notices
+            div NOTICE:
+            .notice A finance charge of 1.5% will be made on unpaid balances after 30 days.
+        footer
+        | Invoice was created on a computer and is valid without the signature and seal.
 ```
 
 The line `include style.css` includes our stylesheet `style.css` from the project root.
 
 ```
+
+```
+
+    @font-face {
+        font-family: SourceSansPro;
+        src: url(SourceSansPro-Regular.ttf);
+    }
+
+    .clearfix:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    a {
+        color: #0087c3;
+        text-decoration: none;
+    }
+
     body {
-        font-family: Helvetica;
+        position: relative;
+        width: 21cm;
+        height: 29.7cm;
+        margin: 0 auto;
+        color: #555555;
+        background: #ffffff;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        font-family: SourceSansPro;
     }
 
-    h1 {
-        font-size: 36px;
-        border-bottom: 1px solid red;
+    header {
+        padding: 10px 0;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #aaaaaa;
     }
 
-    h3 {
-        font-size: 16px;
+    #logo {
+        float: left;
+        margin-top: 8px;
     }
+
+    #logo img {
+        height: 70px;
+    }
+
+    #company {
+        float: right;
+        text-align: right;
+    }
+
+    #details {
+        margin-bottom: 50px;
+    }
+
+    #client {
+        padding-left: 6px;
+        border-left: 6px solid #0087c3;
+        float: left;
+    }
+
+    #client .to {
+        color: #777777;
+    }
+
+    h2.name {
+        font-size: 1.4em;
+        font-weight: normal;
+        margin: 0;
+    }
+
+    #invoice {
+        float: right;
+        text-align: right;
+    }
+
+    #invoice h1 {
+        color: #0087c3;
+        font-size: 2.4em;
+        line-height: 1em;
+        font-weight: normal;
+        margin: 0 0 10px 0;
+    }
+
+    #invoice .date {
+        font-size: 1.1em;
+        color: #777777;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        margin-bottom: 20px;
+    }
+
+    table th,
+    table td {
+        padding: 20px;
+        background: #eeeeee;
+        text-align: center;
+        border-bottom: 1px solid #ffffff;
+    }
+
+    table th {
+        white-space: nowrap;
+        font-weight: normal;
+    }
+
+    table td {
+        text-align: right;
+    }
+
+    table td h3 {
+        color: #57b223;
+        font-size: 1.2em;
+        font-weight: normal;
+        margin: 0 0 0.2em 0;
+    }
+
+    table .no {
+        color: #ffffff;
+        font-size: 1.6em;
+        background: #57b223;
+    }
+
+    table .desc {
+        text-align: left;
+    }
+
+    table .unit {
+        background: #dddddd;
+    }
+
+    table .qty {
+    }
+
+    table .total {
+        background: #57b223;
+        color: #ffffff;
+    }
+
+    table td.unit,
+    table td.qty,
+    table td.total {
+        font-size: 1.2em;
+    }
+
+    table tbody tr:last-child td {
+        border: none;
+    }
+
+    table tfoot td {
+        padding: 10px 20px;
+        background: #ffffff;
+        border-bottom: none;
+        font-size: 1.2em;
+        white-space: nowrap;
+        border-top: 1px solid #aaaaaa;
+    }
+
+    table tfoot tr:first-child td {
+        border-top: none;
+    }
+
+    table tfoot tr:last-child td {
+        color: #57b223;
+        font-size: 1.4em;
+        border-top: 1px solid #57b223;
+    }
+
+    table tfoot tr td:first-child {
+        border: none;
+    }
+
+    #thanks {
+        font-size: 2em;
+        margin-bottom: 50px;
+    }
+
+    #notices {
+        padding-left: 6px;
+        border-left: 6px solid #0087c3;
+    }
+
+    #notices .notice {
+        font-size: 1.2em;
+    }
+
+    footer {
+        color: #777777;
+        width: 100%;
+        height: 30px;
+        position: absolute;
+        bottom: 0;
+        border-top: 1px solid #aaaaaa;
+        padding: 8px 0;
+        text-align: center;
+    }
+
+```
 
 
 ```
