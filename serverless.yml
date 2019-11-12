@@ -1,0 +1,14 @@
+service: pdf-puppeteer
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: dev
+  profile: default
+
+plugins:
+  - serverless-offline
+
+functions:
+  pdf:
+    handler: pdf.pdf
