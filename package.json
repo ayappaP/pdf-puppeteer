@@ -5,12 +5,12 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "serverless": "^1.57.0"
+    "serverless": "^1.57.0",
+    "puppeteer": "^2.0.0"
   },
   "dependencies": {
     "chrome-aws-lambda": "^2.0.0",
     "pug": "^2.0.4",
-    "puppeteer": "^2.0.0",
     "puppeteer-core": "^2.0.0",
     "serverless-apigw-binary": "^0.4.4",
     "serverless-offline": "^5.12.0"
