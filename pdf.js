@@ -61,16 +61,16 @@ module.exports.pdf = async (event, context, callBack) => {
       ServerSideEncryption: "AES256"
     };
 
-    s3.putObject(s3Params, err => {
-      if (err) {
-        console.log("err", err);
-        return callBack(null, { error });
-      }
-    });
+    // s3.putObject(s3Params, err => {
+    //   if (err) {
+    //     console.log("err", err);
+    //     return callBack(null, { error });
+    //   }
+    // });
 
     context.succeed(response);
 
-    // fs.writeFileSync("invoice.pdf", pdf); // Locally
+    fs.writeFileSync("invoice.pdf", pdf); // Locally
   } catch (error) {
     return context.fail(error);
   } finally {

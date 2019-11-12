@@ -1,11 +1,81 @@
 doctype html
-html(lang='en')
+html(lang="en")
   head
-    meta(charset='UTF-8')
-    title PDF Generator
+    meta(charset="utf-8")
+    title Example 2
     style
-      include style.css      
+      include style.css
   body
-    h1 Monthly report
-    
-    #body Here comes the values #{name}
+    header.clearfix
+      #logo
+        img(src="./logo.png")
+      #company
+        h2.name Company Name
+        div 455 Foggy Heights, AZ 85004, US
+        div (602) 519-0450
+        div
+          a(href="mailto:company@example.com") company@example.com
+    main
+      #details.clearfix
+        #client
+          .to INVOICE TO:
+          h2.name John Doe
+          .address 796 Silver Harbour, TX 79273, US
+          .email
+            a(href="mailto:john@example.com") john@example.com
+        #invoice
+          h1 INVOICE 3-2-1
+          .date Date of Invoice: 01/06/2014
+          .date Due Date: 30/06/2014
+      table(border="0" cellspacing="0" cellpadding="0")
+        thead
+          tr
+            th.no #
+            th.desc DESCRIPTION
+            th.unit UNIT PRICE
+            th.qty QUANTITY
+            th.total TOTAL
+        tbody
+          tr
+            td.no 01
+            td.desc
+              h3 Website Design
+              | Creating a recognizable design solution based on the company's existing visual identity
+            td.unit $40.00
+            td.qty 30
+            td.total $1,200.00
+          tr
+            td.no 02
+            td.desc
+              h3 Website Development
+              | Developing a Content Management System-based Website
+            td.unit $40.00
+            td.qty 80
+            td.total $3,200.00
+          tr
+            td.no 03
+            td.desc
+              h3 Search Engines Optimization
+              | Optimize the site for search engines (SEO)
+            td.unit $40.00
+            td.qty 20
+            td.total $800.00
+        tfoot
+          tr
+            td(colspan="2")
+            td(colspan="2") SUBTOTAL
+            td $5,200.00
+          tr
+            td(colspan="2")
+            td(colspan="2") TAX 25%
+            td $1,300.00
+          tr
+            td(colspan="2")
+            td(colspan="2") GRAND TOTAL
+            td $6,500.00
+      #thanks Thank you!
+      #notices
+        div NOTICE:
+        .notice A finance charge of 1.5% will be made on unpaid balances after 30 days.
+    footer
+      | Invoice was created on a computer and is valid without the signature and seal.
